@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			setInterval(function(){	
+				var d = new Date();
+				myh1.innerHTML = d.toLocaleString()
+			},1000);
+			function myfn(){
+				i1.value = (i1.value)?i1.value:0
+				i2.value = (i2.value)?i2.value:0
+				var seconds = parseInt(i1.value)
+				parseInt(i2.value)*60;
+				var timeid = setInterval(function(){
+					seconds--;
+					var minutes = parseInt((seconds%3600)/60);	
+					i2.value = minutes;
+					i1.value = seconds%60;
+					if(seconds==0){
+						clearInterval(timeid);
+						alert("时间到");
+					}
+				},1000)
+			}
+		</script>
+	</head>
+	<body>
+		<h1 id="myh1"></h1>
+		<input type="text" placeholder="分" id="i2">
+		<input type="text" placeholder="秒" id="i1">
+		<input type="button" value="开始倒计时" onclick="myfn()">
+	</body>
+</html>
